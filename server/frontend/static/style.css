@@ -124,3 +124,36 @@ img{
     text-align:center;
     box-shadow: 2px 2px 3px #999;  
 }
+
+.contact-container {
+    display: flex;
+    flex-direction: row; 
+    margin: auto;
+    justify-content: space-between 
+}
+
+.card-contact {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 40px !important;
+    padding: 20px 40px;
+    width: 70%;
+    margin: auto; 
+    margin-top:5%;
+    margin-bottom:5%;
+}
+
+.contact-info {    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-info p {
+    margin: 0;
+    color: rgb(67, 131, 222);
+}
+
+.contact-info a {
+    text-decoration: none;
+}
