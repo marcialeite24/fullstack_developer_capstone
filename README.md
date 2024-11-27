@@ -52,7 +52,7 @@ Prerequisites
   - Kubernetes cluster set up.
   - Node.js and Python environments configured.
 
-
+<p>&nbsp;</p>
 
 1. The project skeleton can be accessed by cloning this [repository](https://github.com/ibm-developer-skills-network/xrwvm-fullstack_developer_capstone).
 
