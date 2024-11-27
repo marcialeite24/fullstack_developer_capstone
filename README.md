@@ -10,9 +10,8 @@ Course: [Full Stack Application Development Capstone Project](https://www.course
 - [Architecture Overview](#architecture-overview)
 - [Technologies Used](#technologies-used)
 - [Setup and Commands](#setup-and-commands)
-  - [Build and Deploy](#build-and-deploy)
-  - [Autoscaling](#autoscaling)
-  - [Rolling Updates and Rollbacks](#rolling-updates-and-rollbacks)
+- [Acknowledgments](#acknowledgments)
+- [License](#license)
 
 
 ## Overview
@@ -53,7 +52,8 @@ Prerequisites
   - Kubernetes cluster set up.
   - Node.js and Python environments configured.
 
-1. Clone this repository to your local machine. (The project skeleton can be accessed by cloning this [repository](https://github.com/ibm-developer-skills-network/xrwvm-fullstack_developer_capstone))
+1. The project skeleton can be accessed by cloning this [repository](https://github.com/ibm-developer-skills-network/xrwvm-fullstack_developer_capstone).
+
 2. Django Setup:
   - Run the following to set up the django environment.
     ``` bash
@@ -73,7 +73,7 @@ Prerequisites
     python3 manage.py runserver
     ```
 
-2. Run the Mongo Server
+3. Run the Mongo Server
   - Change to the database directory.
     ``` bash
     cd /home/project/fullstack_developer_capstone/server/database
@@ -86,60 +86,43 @@ Prerequisites
     ``` bash
     docker-compose up
     ```
-
-
-
-
-   
-2. Autoscaling
-  - Apply the Horizontal Pod Autoscaler
+  - Open `djangoapp/.env` and replace the backend url
+  
+4. Deploy sentiment analysis on Code Engine
+  - In the code engine CLI, change to `server/djangoapp/microservices` directory.
     ``` bash
-    kubectl autoscale deployment guestbook --cpu-percent=5 --min=1 --max=10
+    cd fullstack_developer_capstone/server/djangoapp/microservices
     ```
-  - Check Autoscaler Status
+  - Run the following command to docker build the sentiment analyzer app
     ``` bash
-    kubectl get hpa guestbook
+    docker build . -t us.icr.io/${SN_ICR_NAMESPACE}/senti_analyzer
     ```
-  - Generate Load to Observe Autoscaling
+  - Push the docker image by running the following command.
     ``` bash
-    kubectl run -i --tty load-generator --rm --image=busybox:1.36.0 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- <your app URL>; done"
+    docker push us.icr.io/${SN_ICR_NAMESPACE}/senti_analyzer
     ```
-  - Monitor Replica Scaling
+  - Deploy the senti_analyzer application on code engine.
     ``` bash
-    kubectl get hpa guestbook --watch
+    ibmcloud ce application create --name sentianalyzer --image us.icr.io/${SN_ICR_NAMESPACE}/senti_analyzer --registry-secret icr-secret --port 5000
     ```
-  - Check the details of the Horizontal Pod Autoscaler
-    ``` bash
-    kubectl get hpa guestbook
-    ```
+  - Open `djangoapp/.env` and replace the sentiment analyzer url
     
-3. Rolling Updates and Rollbacks
-  - Make changes to index.html or other components
-  - Rebuild the Docker Image
+5. Frontend Setup
+  - Switch to the client directory.
     ``` bash
-    docker build . -t us.icr.io/$MY_NAMESPACE/guestbook:v1 && docker push us.icr.io/$MY_NAMESPACE/guestbook:v1
+    cd /home/project/fullstack_developer_capstone/server/frontend
     ```
-  - Update the deployment.yaml file and apply changes
+  - Install all required packages.
     ``` bash
-    kubectl apply -f deployment.yml
+    npm install
     ```
-  - Restart the Application
+  - Run the following command to build the client.
     ``` bash
-    kubectl port-forward deployment.apps/guestbook 3000:3000
+    npm run build
     ```
-  - View Deployment Rollout History
-    ``` bash
-    kubectl rollout history deployment/guestbook
-    ```
-  - View Deployment Revision Details
-    ``` bash
-    kubectl rollout history deployments guestbook --revision=2
-    ```
-  - Undo the Deployment
-    ``` bash
-    kubectl rollout undo deployment/guestbook --to-revision=1
-    ```
-  - Verify the Rollback
-    ``` bash
-    kubectl get rs
-    ```
+
+## Acknowledgements
+This project was developed as part of the IBM Full Stack Software Developer Specialization on Coursera.
+
+## License
+This project is open-source and available under the Apache 2.0 License.
