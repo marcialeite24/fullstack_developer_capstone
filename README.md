@@ -7,6 +7,7 @@ Course: [Full Stack Application Development Capstone Project](https://www.course
 
 - [Overview](#overview)
 - [Features](#features)
+- [Demo](#demo)
 - [Architecture Overview](#architecture-overview)
 - [Technologies Used](#technologies-used)
 - [Setup and Commands](#setup-and-commands)
@@ -46,6 +47,9 @@ The Dealership Reviews Portal is a web application developed as the capstone pro
   5. Front-End Development for Car Inventory Service
     - Car Inventory Front-End Component: Created and integrated a front-end component to interact with the car inventory back-end microservice. Users can filter cars based on Make, Model, Year, Mileage, Price.
 
+## Demo
+![Demo](./demo.gif)
+
 ## Architecture Overview
 ![Architecture Overview](./project-architecture.png)
 
@@ -66,9 +70,9 @@ Prerequisites
 
 <p>&nbsp;</p>
 
-1. The project skeleton can be accessed by cloning this [repository](https://github.com/ibm-developer-skills-network/xrwvm-fullstack_developer_capstone).
+**1. The project skeleton can be accessed by cloning this [repository](https://github.com/ibm-developer-skills-network/xrwvm-fullstack_developer_capstone).**
 
-2. Frontend Setup
+**2. Frontend Setup**
    
 - Switch to the client directory.
     ``` bash
@@ -85,7 +89,7 @@ Prerequisites
     npm run build
     ```
 
-3. Django Setup:
+**3. Django Setup:**
    
 - Run the following to set up the django environment.
     ``` bash
@@ -116,7 +120,7 @@ Prerequisites
     python3 manage.py runserver
     ```
 
-4. Run the Mongo Server
+**4. Run the Mongo Server**
    
 - Change to the database directory.
     ``` bash
@@ -135,7 +139,7 @@ Prerequisites
     
 - Open `djangoapp/.env` and replace the backend url
   
-5. Deploy sentiment analysis on Code Engine
+**5. Deploy sentiment analysis on Code Engine**
    
 - In the code engine CLI, change to `server/djangoapp/microservices` directory.
     ``` bash
@@ -159,8 +163,8 @@ Prerequisites
     
 - Open `djangoapp/.env` and replace the sentiment analyzer url
 
-6. Run the Mongo Server on the carsInventory directory to obtain the searchcars url
-   
+**6. Run the Mongo Server on the carsInventory directory to obtain the searchcars url**
+
 - Change to `server/carsInventory` directory.
     ``` bash
     cd fullstack_developer_capstone/server/carsInventory
