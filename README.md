@@ -56,7 +56,24 @@ Prerequisites
 
 1. The project skeleton can be accessed by cloning this [repository](https://github.com/ibm-developer-skills-network/xrwvm-fullstack_developer_capstone).
 
-2. Django Setup:
+2. Frontend Setup
+   
+- Switch to the client directory.
+    ``` bash
+    cd /home/project/fullstack_developer_capstone/server/frontend
+    ```
+    
+- Install all required packages.
+    ``` bash
+    npm install
+    ```
+    
+- Run the following command to build the client.
+    ``` bash
+    npm run build
+    ```
+
+3. Django Setup:
    
 - Run the following to set up the django environment.
     ``` bash
@@ -75,10 +92,19 @@ Prerequisites
     ``` bash
     python3 manage.py makemigrations
     python3 manage.py migrate
+    ```
+    
+- Create a superuser by running the following command.
+    ``` bash
+    python3 manage.py createsuperuser
+    ```
+    
+- Run the server by executing the following command.
+    ``` bash
     python3 manage.py runserver
     ```
 
-3. Run the Mongo Server
+4. Run the Mongo Server
    
 - Change to the database directory.
     ``` bash
@@ -97,7 +123,7 @@ Prerequisites
     
 - Open `djangoapp/.env` and replace the backend url
   
-4. Deploy sentiment analysis on Code Engine
+5. Deploy sentiment analysis on Code Engine
    
 - In the code engine CLI, change to `server/djangoapp/microservices` directory.
     ``` bash
@@ -121,22 +147,6 @@ Prerequisites
     
 - Open `djangoapp/.env` and replace the sentiment analyzer url
     
-5. Frontend Setup
-   
-- Switch to the client directory.
-    ``` bash
-    cd /home/project/fullstack_developer_capstone/server/frontend
-    ```
-    
-- Install all required packages.
-    ``` bash
-    npm install
-    ```
-    
-- Run the following command to build the client.
-    ``` bash
-    npm run build
-    ```
 
 ## Acknowledgements
 This project was developed as part of the IBM Full Stack Software Developer Specialization on Coursera.
