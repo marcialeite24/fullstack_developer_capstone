@@ -34,6 +34,18 @@ The Dealership Reviews Portal is a web application developed as the capstone pro
   - Log in to manage the system.
   - Add and manage car attributes (make, model, etc.) via the admin panel.
 
+**Enhancements**
+  1. Front-End Enhancements
+    - Searchable Dropdown for States: Transformed the "States" dropdown on the "Dealerships" page into a searchable textbox. Allows users to filter dealerships by entering search strings.
+    - Improved Color Scheme: Enhanced the color scheme of the Navbar and Dealerships button on the home page. Refined the colors of the Review panel and review icons on the "Dealerships Review" page.
+    - Dealer Review Panel Adjustments: Fine-tuned visual elements such as font size and alignment to improve readability.
+     
+  3. Car Inventory Back-End Service
+    - Microservice for Car Inventory: Developed a back-end microservice using MongoDB and Node.js to manage car inventory details. Integrated this microservice with the existing Django back end.
+    
+  5. Front-End Development for Car Inventory Service
+    - Car Inventory Front-End Component: Created and integrated a front-end component to interact with the car inventory back-end microservice. Users can filter cars based on Make, Model, Year, Mileage, Price.
+
 ## Architecture Overview
 ![Architecture Overview](./project-architecture.png)
 
@@ -146,7 +158,25 @@ Prerequisites
     ```
     
 - Open `djangoapp/.env` and replace the sentiment analyzer url
-    
+
+6. Run the Mongo Server on the carsInventory directory to obtain the searchcars url
+   
+- Change to `server/carsInventory` directory.
+    ``` bash
+    cd fullstack_developer_capstone/server/carsInventory
+    ```
+- Install the dependencies by executing the command:
+    ``` bash
+    npm install
+    ```
+- Build the Docker application.
+    ``` bash
+    docker build . -t nodeapp
+    ```
+- Execute the below command to launch the server:
+    ``` bash
+    docker-compose up
+    ```
 
 ## Acknowledgements
 This project was developed as part of the IBM Full Stack Software Developer Specialization on Coursera.
